@@ -13,6 +13,7 @@ import java.util.HashMap;
 
 public class CfcDefaultHandler extends HttpServlet {
     private HttpRequestHandler handler;
+    public ClientConfig clientConfig;
 
     static final String XCfcRequestID = "X-Cfc-RequestId";
     static final String XCfcApiID = "X-Cfc-ApiID";
@@ -26,6 +27,7 @@ public class CfcDefaultHandler extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
+        clientConfig = ClientConfig.getInstance();
         try {
             handler = getRequestHandler();
         } catch (Exception ex) {
